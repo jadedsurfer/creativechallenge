@@ -1,0 +1,21 @@
+{
+  "name": "auth",
+  "version": "0.0.1",
+  "main": "./app.js",
+  "private": true,
+  "plugin": {
+    "consumes": [
+      "debug",
+      "server",
+      "Router",
+      "siteServer",
+      "browserify"
+    ],
+    "provides": [
+      "auth"
+    ]
+  },
+  "dependencies": {
+    "consolidate": "^0.13.1"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "dynamic": {
+    "title": "Page Title",
+    "othervar": "hello"
+  },
+  "jade": {
+    "title": "Page Title"
+  },
+  "404": {
+    "title": "Page Not Found"
+  }
+}

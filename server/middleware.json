@@ -13,23 +13,26 @@
       "params": {
         "threshold": 512
       }
+    },
+    "cors": {
+      "params": {
+        "origin": true,
+        "credentials": true,
+        "maxAge": 86400
+      }
     }
   },
   "session": {
-    "express-session": {
-      "params": [
-        {
-          "secret": "394fkkasndl49afkldhgnd",
-          "resave": false,
-          "saveUninitialized": true
-        }
-      ]
-    }
   },
   "auth": {
-    "loopback#token": {}
   },
   "parse": {
+    "body-parser#json": {},
+    "body-parser#urlencoded": {
+      "params": {
+        "extended": true
+      }
+    }
   },
   "routes": {
     "loopback#status": {
@@ -42,7 +45,6 @@
     }
   },
   "final": {
-    "response-time": {},
     "./middleware/custom-url-not-found": {}
   },
   "final:after": {

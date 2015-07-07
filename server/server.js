@@ -1,21 +1,26 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+//var finishAuthConfig = require('./post-boot/auth');
 
 var app = module.exports = loopback();
 
-// Bootstrap the application, configure models, datasources and middleware.
-// Sub-apps like REST API are mounted via boot scripts.
-boot(app, __dirname);
-
-app.start = function() {
+app.start = function appStart() {
   // start the web server
-  return app.listen(function() {
+  return app.listen(function appListen() {
     app.emit('started');
     console.log('Web server listening at: %s', app.get('url'));
   });
 };
 
+// Bootstrap the application, configure models, datasources and middleware.
+// Sub-apps like REST API are mounted via boot scripts.
+boot(app, __dirname, function startApp(err, sys){
+
 // start the server if `$ node server.js`
-if (require.main === module) {
-  app.start();
-}
+  if (require.main === module) {
+    //finishAuthConfig(app);
+    app.start();
+  }
+});
+
+

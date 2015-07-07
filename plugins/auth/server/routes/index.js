@@ -9,7 +9,6 @@ module.exports = function(options, imports) {
   var app = imports.server;
   var router = imports.Router();
   var siteServer = imports.siteServer;
-  var browserify = imports.browserify;
   var view = require('consolidate');
 
   function getPath(file){
@@ -17,27 +16,6 @@ module.exports = function(options, imports) {
   }
 
   debug('configure routes');
-
-  //// simple route attached to router
-  //router.get('/auth/fromrouter', function(req, res){
-  //  res.send('hello from attached router');
-  //});
-  //
-  //// example of how to use architect on client
-  //router.get('/architect', function(req, res){
-  //  res.sendFile(path.join(__dirname, '../../', 'public/architect/index.html'));
-  //});
-  //
-  //// servers browserified version of javascript
-  //router.get('/architect/build.js',
-  //    browserify(
-  //      path.join(__dirname, '../../', 'public/architect/public/server.js'),
-  //      {
-  //        cache: true,
-  //        precompile: true
-  //      }
-  //    )
-  //);
 
   router.get('/', function (req, res, next) {
 
@@ -51,7 +29,7 @@ module.exports = function(options, imports) {
   });
 
   router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next){
-    view.jade('views/pages/loginProfiles.jade', {
+    view.jade(getPath('views/pages/loginProfiles.jade'), {
       user: req.user,
       url: req.url
     }, function(err, html){
@@ -61,7 +39,7 @@ module.exports = function(options, imports) {
   });
 
   router.get('/link/account', ensureLoggedIn('/login'), function(req, res, next){
-    view.jade('views/pages/linkedAccounts.jade', {
+    view.jade(getPath('views/pages/linkedAccounts.jade'), {
       user: req.user,
       url: req.url
     }, function(err, html){
@@ -71,7 +49,7 @@ module.exports = function(options, imports) {
   });
 
   router.get('/local', function (req, res, next){
-    view.jade('views/pages/local.jade', {
+    view.jade(getPath('views/pages/local.jade'), {
       user: req.user,
       url: req.url
     }, function(err, html){
@@ -81,7 +59,7 @@ module.exports = function(options, imports) {
   });
 
   router.get('/signup', function (req, res, next){
-    view.jade('views/pages/signup.jade', {
+    view.jade(getPath('views/pages/signup.jade'), {
       user: req.user,
       url: req.url
     }, function(err, html){
@@ -120,9 +98,10 @@ module.exports = function(options, imports) {
   });
 
   router.get('/login', function (req, res, next){
-    view.jade('views/pages/login.jade', {
+    view.jade(getPath('views/pages/login.jade'), {
       user: req.user,
-      url: req.url
+      url: req.url,
+      messages: {}
     }, function(err, html){
       if (err) throw err;
       res.send(html);
@@ -130,7 +109,7 @@ module.exports = function(options, imports) {
   });
 
   router.get('/link', function (req, res, next){
-    view.jade('views/pages/link.jade', {
+    view.jade(getPath('views/pages/link.jade'), {
       user: req.user,
       url: req.url
     }, function(err, html){

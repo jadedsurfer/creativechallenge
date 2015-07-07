@@ -8,14 +8,16 @@
       "debug",
       "server",
       "Router",
-      "siteServer",
-      "browserify"
+      "siteServer"
     ],
     "provides": [
       "auth"
     ]
   },
   "dependencies": {
-    "consolidate": "^0.13.1"
+    "connect-ensure-login": "^0.1.1",
+    "consolidate": "^0.13.1",
+    "loopback-component-passport": "^1.5.0",
+    "express-flash": "0.0.2"
   }
 }

@@ -1,7 +1,7 @@
 /* global module, require */
 // require the config file
 // this will make all of the code available
-var config = require('./build.config');
+var config = require('./build.config.js');
 var architect = require('architect');
 
 module.exports = architect.resolveConfig(

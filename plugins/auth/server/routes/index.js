@@ -5,11 +5,11 @@ module.exports = function(options, imports) {
 
   var path = require('path');
   var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+  var view = require('consolidate');
 
   var app = imports.server;
   var router = imports.Router();
   var siteServer = imports.siteServer;
-  var view = require('consolidate');
 
   function getPath(file){
     return path.join(__dirname, '../../', file);
@@ -18,7 +18,6 @@ module.exports = function(options, imports) {
   debug('configure routes');
 
   router.get('/', function (req, res, next) {
-
     view.jade(getPath('views/pages/index.jade'), {user:
       req.user,
       url: req.url
@@ -28,7 +27,8 @@ module.exports = function(options, imports) {
     });
   });
 
-  router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next){
+  router.get('/auth/account', ensureLoggedIn('/login'),
+    function(req, res, next){
     view.jade(getPath('views/pages/loginProfiles.jade'), {
       user: req.user,
       url: req.url
@@ -38,7 +38,8 @@ module.exports = function(options, imports) {
     });
   });
 
-  router.get('/link/account', ensureLoggedIn('/login'), function(req, res, next){
+  router.get('/link/account', ensureLoggedIn('/login'),
+    function(req, res, next){
     view.jade(getPath('views/pages/linkedAccounts.jade'), {
       user: req.user,
       url: req.url
@@ -126,10 +127,6 @@ module.exports = function(options, imports) {
 
   debug('.use router');
   app.use('/', router);
-
-  //app.get('/direct', function(req, res){
-  //  res.send('this route was attached directly to the app');
-  //});
 
   debug('serve dynamic content from dynamic');
   var pathToDynamic = path.join(__dirname, '../../', 'dynamic');

@@ -11,13 +11,15 @@ var jshint = require('gulp-jshint');
 
 // Starts server for tasks that require a server
 gulp.task('server:start', function(done){
-  server.listen({path: '.', delay: 3000}, done);
+  var options = {path: '.', delay: 3000};
+  options.env = require('./.env.json');
+  server.listen(options, done);
 });
 
 gulp.task('server:restart', function(){
   server.changed(function(){
     // This will need to change for gulp v4
-    gulp.run('test:server-unit');
+    gulp.run('test:unit:server');
   });
 });
 
@@ -150,7 +152,11 @@ gulp.task('test', ['test:all'], function(done){
 
 // Restarts server on code changes
 gulp.task('default', ['server:start'], function(){
-  gulp.watch(['./server/*.js', './server/*.json'], function(){
+  gulp.watch([
+    './server/*.js',
+    './server/*.json',
+    './plugins/**/app.js'
+  ], function(){
     // This will need to change for gulp v4
     gulp.run('server:restart');
   });

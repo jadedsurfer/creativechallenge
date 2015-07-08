@@ -29,13 +29,14 @@ module.exports = function(options, imports) {
 
   router.get('/auth/account', ensureLoggedIn('/login'),
     function(req, res, next){
-    view.jade(getPath('views/pages/loginProfiles.jade'), {
-      user: req.user,
-      url: req.url
-    }, function(err, html){
-      if (err) throw err;
-      res.send(html);
-    });
+      res.redirect('/');
+    //view.jade(getPath('views/pages/loginProfiles.jade'), {
+    //  user: req.user,
+    //  url: req.url
+    //}, function(err, html){
+    //  if (err) throw err;
+    //  res.send(html);
+    //});
   });
 
   router.get('/link/account', ensureLoggedIn('/login'),
@@ -62,7 +63,8 @@ module.exports = function(options, imports) {
   router.get('/signup', function (req, res, next){
     view.jade(getPath('views/pages/signup.jade'), {
       user: req.user,
-      url: req.url
+      url: req.url,
+      messages: {}
     }, function(err, html){
       if (err) throw err;
       res.send(html);

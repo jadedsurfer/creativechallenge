@@ -2,7 +2,7 @@
   "name": "creative-challenge",
   "version": "0.0.0",
   "engines": {
-    "node": "0.11.x"
+    "node": "0.10.x"
   },
   "main": "server/server.js",
   "scripts": {

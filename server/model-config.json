@@ -7,31 +7,31 @@
     ]
   },
   "User": {
-    "dataSource": "db",
+    "dataSource": "mongolab",
     "public": true
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "mongolab",
     "public": true
   },
   "UserCredential": {
-    "dataSource": "db",
+    "dataSource": "mongolab",
     "public": true
   },
   "UserIdentity": {
-    "dataSource": "db",
+    "dataSource": "mongolab",
     "public": true
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mongolab",
     "public": true
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mongolab",
     "public": true
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mongolab",
     "public": true
   }
 }

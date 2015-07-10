@@ -6,6 +6,7 @@
   },
   "main": "server/server.js",
   "scripts": {
+    "start": "node server/server.js",
     "pretest": "jshint .",
     "test": "gulp test"
   },

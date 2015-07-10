@@ -1,5 +1,5 @@
 {
-  "name": "auth",
+  "name": "www",
   "version": "0.0.1",
   "main": "./app.js",
   "private": true,
@@ -8,11 +8,10 @@
       "debug",
       "server",
       "Router",
-      "siteServer",
       "browserify"
     ],
     "provides": [
-      "auth"
+      "www"
     ]
   },
   "dependencies": {

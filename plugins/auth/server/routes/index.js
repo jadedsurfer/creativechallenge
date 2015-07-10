@@ -9,23 +9,12 @@ module.exports = function(options, imports) {
 
   var app = imports.server;
   var router = imports.Router();
-  var siteServer = imports.siteServer;
 
   function getPath(file){
     return path.join(__dirname, '../../', file);
   }
 
   debug('configure routes');
-
-  router.get('/', function (req, res, next) {
-    view.jade(getPath('views/pages/index.jade'), {user:
-      req.user,
-      url: req.url
-    }, function(err, html){
-      if (err) throw err;
-      res.send(html);
-    });
-  });
 
   router.get('/auth/account', ensureLoggedIn('/login'),
     function(req, res, next){
@@ -129,10 +118,6 @@ module.exports = function(options, imports) {
 
   debug('.use router');
   app.use('/', router);
-
-  debug('serve dynamic content from dynamic');
-  var pathToDynamic = path.join(__dirname, '../../', 'dynamic');
-  siteServer.mountDynamic('/dynamic', pathToDynamic);
 
   return router;
 };

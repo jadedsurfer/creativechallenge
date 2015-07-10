@@ -32,10 +32,10 @@
       "packagePath": "./node_modules/architect-utils"
     },
     {
-      "packagePath": "./plugins/architect-loopback-site-server"
+      "packagePath": "./node_modules/architect-express-browserify"
     },
     {
-      "packagePath": "./node_modules/architect-express-browserify"
+      "packagePath": "./plugins/www"
     },
     {
       "packagePath": "./plugins/auth"

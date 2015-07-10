@@ -33,5 +33,9 @@
   "Role": {
     "dataSource": "mongolab",
     "public": true
+  },
+  "Challenge": {
+    "dataSource": "mongolab",
+    "public": true
   }
 }

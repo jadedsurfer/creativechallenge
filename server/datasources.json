@@ -4,6 +4,7 @@
     "connector": "memory"
   },
   "mongolab": {
+    "name": "mongolab",
     "connector": "mongodb",
     "defaultForType": "mongolab"
   }

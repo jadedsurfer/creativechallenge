@@ -35,6 +35,10 @@
       "packagePath": "./plugins/www"
     },
     {
+      "packagePath": "./plugins/mongo-sessions",
+      "datasource": "Mongolab"
+    },
+    {
       "packagePath": "./plugins/auth"
     }
   ]

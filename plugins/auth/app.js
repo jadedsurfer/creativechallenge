@@ -29,18 +29,6 @@ module.exports = function(options, imports, register) {
     model: server.models.accessToken
   }));
 
-  debug('use cookieParser before session middleware');
-  server.middleware('session:before', server.loopback.cookieParser(
-    process.env.cookieSecret
-  ));
-
-  debug('use loopback session for session middleware');
-  server.middleware('session', server.loopback.session({
-    secret: process.env.sessionSecret,
-    saveUninitialized: true,
-    resave: true
-  }));
-
   debug('init passport configuration');
   passportConfigurator.init();
 

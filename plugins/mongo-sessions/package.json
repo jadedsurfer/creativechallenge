@@ -1,0 +1,17 @@
+{
+  "name": "mongo-sessions",
+  "version": "0.0.1",
+  "main": "./app.js",
+  "private": true,
+  "plugin": {
+    "consumes": [
+      "debug",
+      "server"
+    ],
+    "provides": [
+    ]
+  },
+  "dependencies": {
+    "connect-mongo": "^0.8.1"
+  }
+}

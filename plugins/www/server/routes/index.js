@@ -8,6 +8,7 @@ module.exports = function(options, imports) {
   var app = imports.server;
   var router = imports.Router();
   var view = require('consolidate');
+  var moment = require('moment');
 
   function getPath(file){
     return path.join(__dirname, '../../', file);
@@ -19,14 +20,21 @@ module.exports = function(options, imports) {
 
     var Challenge = app.models.Challenge;
 
-    Challenge.find({where: {complete: false}});
+    Challenge.findOne({where: {complete: false}}, function(err, challenge){
+      if (err) next();
 
-    view.jade(getPath('views/pages/index.jade'), {user:
-      req.user,
-      url: req.url
-    }, function(err, html){
-      if (err) throw err;
-      res.send(html);
+
+      view.jade(getPath('views/pages/index.jade'), {
+        user: req.user,
+        url: req.url,
+        challenge: {
+          title: challenge.title,
+          submissionDueDate: moment(challenge.submissionDueDate).format("MMMM D, YYYY")
+        }
+      }, function(err, html){
+        if (err) throw err;
+        res.send(html);
+      });
     });
   });
 

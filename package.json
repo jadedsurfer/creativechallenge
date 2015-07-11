@@ -12,13 +12,10 @@
   },
   "dependencies": {
     "architect": "^0.1.11",
-    "architect-express-browserify": "0.0.2",
     "architect-utils": "0.0.6",
     "backbone": "^1.1.2",
     "backbone.controller": "^0.3.1",
     "body-parser": "^1.10.0",
-    "brfs": "^1.2.0",
-    "browserify-middleware": "^4.1.0",
     "compression": "^1.0.3",
     "connect-ensure-login": "^0.1.1",
     "connect-timeout": "^1.4.0",
@@ -73,8 +70,6 @@
     "karma-browserify": "^2.0.0",
     "karma-chrome-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.5",
-    "loopback-explorer": "^1.8.0",
-    "rimraf": "^2.2.8",
-    "strongloop": "^4.0.5"
+    "rimraf": "^2.2.8"
   }
 }

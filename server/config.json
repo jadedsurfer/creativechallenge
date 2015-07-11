@@ -32,9 +32,6 @@
       "packagePath": "./node_modules/architect-utils"
     },
     {
-      "packagePath": "./node_modules/architect-express-browserify"
-    },
-    {
       "packagePath": "./plugins/www"
     },
     {

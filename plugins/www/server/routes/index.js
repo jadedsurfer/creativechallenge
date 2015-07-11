@@ -17,6 +17,10 @@ module.exports = function(options, imports) {
 
   router.get('/', function (req, res, next) {
 
+    var Challenge = app.models.Challenge;
+
+    Challenge.find({where: {complete: false}});
+
     view.jade(getPath('views/pages/index.jade'), {user:
       req.user,
       url: req.url

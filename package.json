@@ -48,6 +48,7 @@
     "response-time": "^2.2.0",
     "serve-favicon": "^2.2.0",
     "serve-static": "^1.7.1",
+    "source-map": "^0.1.43",
     "underscore": "^1.7.0",
     "vhost": "^3.0.0"
   },

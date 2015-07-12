@@ -17,18 +17,15 @@ app.start = function appStart() {
 console.log('boot');
 boot(app, __dirname, function startApp(err, sys){
   console.log('boot callback');
-  console.log(err);
-  if (sys) {
-    console.log('got sys');
-  }
-// start the server if `$ node server.js`
-  if (require.main === module) {
-    console.log('detected server');
-    app.start();
-  }
-});
 
-app.start();
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
+
+  app.start();
+
+});
 
 
 

@@ -5,7 +5,6 @@ var app = module.exports = loopback();
 
 app.start = function appStart() {
   // start the web server
-  console.log('start');
   return app.listen(function appListen() {
     app.emit('started');
     console.log('Web server listening at: %s', app.get('url'));
@@ -14,9 +13,7 @@ app.start = function appStart() {
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
-console.log('boot');
 boot(app, __dirname, function startApp(err, sys){
-  console.log('boot callback');
 
   if (err) {
     console.error(err);

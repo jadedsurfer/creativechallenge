@@ -1,4 +1,4 @@
 module.exports = {
   host: process.env.IP || process.env.WEBSITE_HOSTNAME,
-  port: process.env.port || process.env.PORT || 1337
+  port: process.env.PORT || process.env.port || 1337
 };

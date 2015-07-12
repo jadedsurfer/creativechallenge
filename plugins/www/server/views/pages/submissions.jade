@@ -1,0 +1,11 @@
+extends ../layouts/layout
+block content
+    h2 Creative Challenge:
+    h1 #{challenge.title}
+    h4 Submissions due: #{challenge.submissionDueDate}
+    ul.list-unstyled
+      for submission in submissions
+        li
+          div
+            p #{submission.submitter}
+            img(src='#{submission.url}', width='800px')

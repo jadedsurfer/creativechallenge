@@ -18,7 +18,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "submissions": {
+      "type": "hasMany",
+      "model": "Submission",
+      "foreignKey": "challenge"
+    }
+  },
   "acls": [],
   "methods": []
 }

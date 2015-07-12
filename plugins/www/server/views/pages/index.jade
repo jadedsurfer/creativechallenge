@@ -2,7 +2,8 @@ extends ../layouts/layout
 block content
   .jumbotron
     h2 Creative Challenge:
-    h1 #{challenge.title}
+    h1
+      a(href='/challenges/#{challenge.id}/submissions') #{challenge.title}
     h4 Submissions due: #{challenge.submissionDueDate}
     ul
       li One submission (photograph, painting, drawing, sculpture) per challenge

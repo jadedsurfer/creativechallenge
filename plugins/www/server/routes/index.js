@@ -11,7 +11,7 @@ module.exports = function(options, imports) {
   var moment = require('moment');
 
   function getPath(file){
-    return path.join(__dirname, '../../', file);
+    return path.join(__dirname, '../', file);
   }
 
   debug('configure routes');
@@ -28,6 +28,7 @@ module.exports = function(options, imports) {
         user: req.user,
         url: req.url,
         challenge: {
+          id: challenge.id,
           title: challenge.title,
           submissionDueDate:
             moment(challenge.submissionDueDate).format('MMMM D, YYYY')
@@ -36,6 +37,34 @@ module.exports = function(options, imports) {
         if (err) throw err;
         res.send(html);
       });
+    });
+  });
+
+  router.get('/challenges/:challengeId/submissions', function (req, res, next) {
+
+    var Challenge = app.models.Challenge;
+    var Submission = app.models.Submission;
+
+    Challenge.findOne({where: {_id: req.challengeId}}, function(err, challenge){
+      if (err) next();
+
+      challenge.submissions({}, function(err, submissions){
+        view.jade(getPath('views/pages/submissions.jade'), {
+          user: req.user,
+          url: req.url,
+          challenge: {
+            id: challenge.id,
+            title: challenge.title,
+            submissionDueDate:
+              moment(challenge.submissionDueDate).format('MMMM D, YYYY')
+          },
+          submissions: submissions
+        }, function(err, html){
+          if (err) throw err;
+          res.send(html);
+        });
+      });
+
     });
   });
 

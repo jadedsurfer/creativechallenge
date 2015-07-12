@@ -1,6 +1,5 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
-//var finishAuthConfig = require('./post-boot/auth');
 
 var app = module.exports = loopback();
 
@@ -24,7 +23,7 @@ boot(app, __dirname, function startApp(err, sys){
   }
 // start the server if `$ node server.js`
   if (require.main === module) {
-    //finishAuthConfig(app);
+    console.log('detected server');
     app.start();
   }
 });

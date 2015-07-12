@@ -1,0 +1,28 @@
+{
+  "name": "Account",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "submissions": {
+      "type": "hasMany",
+      "model": "Submission",
+      "foreignKey": ""
+    },
+    "votes": {
+      "type": "hasMany",
+      "model": "Vote",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

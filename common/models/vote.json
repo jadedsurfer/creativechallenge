@@ -1,0 +1,24 @@
+{
+  "name": "Vote",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": ""
+    },
+    "submission": {
+      "type": "belongsTo",
+      "model": "Submission",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

@@ -41,5 +41,13 @@
   "Submission": {
     "dataSource": "mongolab",
     "public": true
+  },
+  "Vote": {
+    "dataSource": "mongolab",
+    "public": true
+  },
+  "Account": {
+    "dataSource": "mongolab",
+    "public": true
   }
 }

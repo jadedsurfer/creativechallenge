@@ -23,12 +23,17 @@
   "relations": {
     "user": {
       "type": "belongsTo",
-      "model": "User",
+      "model": "Account",
       "foreignKey": ""
     },
     "challenge": {
       "type": "belongsTo",
       "model": "Challenge",
+      "foreignKey": ""
+    },
+    "votes": {
+      "type": "hasMany",
+      "model": "Vote",
       "foreignKey": ""
     }
   },

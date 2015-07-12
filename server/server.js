@@ -29,5 +29,7 @@ boot(app, __dirname, function startApp(err, sys){
   }
 });
 
+app.start();
+
 
 

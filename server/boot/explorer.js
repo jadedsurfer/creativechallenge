@@ -1,4 +1,5 @@
 module.exports = function mountLoopBackExplorer(server) {
+  console.log('explorer');
   var explorer;
   try {
     explorer = require('loopback-explorer');

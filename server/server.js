@@ -17,7 +17,7 @@ app.start = function appStart() {
 // Sub-apps like REST API are mounted via boot scripts.
 console.log('boot');
 boot(app, __dirname, function startApp(err, sys){
-
+  console.log('boot callback');
   console.log(err);
   if (sys) {
     console.log('got sys');

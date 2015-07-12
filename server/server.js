@@ -18,6 +18,10 @@ app.start = function appStart() {
 console.log('boot');
 boot(app, __dirname, function startApp(err, sys){
 
+  console.log(err);
+  if (sys) {
+    console.log('got sys');
+  }
 // start the server if `$ node server.js`
   if (require.main === module) {
     //finishAuthConfig(app);

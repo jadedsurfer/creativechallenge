@@ -7,8 +7,7 @@ app.start = function appStart() {
   // start the web server
   return app.listen(function appListen() {
     app.emit('started');
-    console.log('Web server listening at: %s:%s',
-      app.get('host'), app.get('port'));
+    console.log('Web server listening at: %s', app.get('host'));
   });
 };
 

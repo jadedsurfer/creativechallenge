@@ -29,7 +29,8 @@ module.exports = function(options, imports) {
         url: req.url,
         challenge: {
           title: challenge.title,
-          submissionDueDate: moment(challenge.submissionDueDate).format("MMMM D, YYYY")
+          submissionDueDate:
+            moment(challenge.submissionDueDate).format('MMMM D, YYYY')
         }
       }, function(err, html){
         if (err) throw err;

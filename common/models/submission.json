@@ -1,0 +1,26 @@
+{
+  "name": "Submission",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "submitter": {
+      "type": "string",
+      "required": true
+    },
+    "submitted": {
+      "type": "date",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

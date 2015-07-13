@@ -57,7 +57,7 @@
   "devDependencies": {
     "frisby": "git+https://github.com/vlucas/frisby.git",
     "gulp": "^3.8.10",
-    "gulp-develop-server": "^0.2.5",
+    "gulp-develop-server": "^0.4.3",
     "gulp-jasmine": "^2.0.0",
     "gulp-jsdoc": "^0.1.4",
     "gulp-jshint": "^1.9.0",

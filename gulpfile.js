@@ -153,10 +153,11 @@ gulp.task('test', ['test:all'], function(done){
 // Restarts server on code changes
 gulp.task('default', ['server:start'], function(){
   gulp.watch([
-    './server/*.js',
-    './server/*.json',
-    './plugins/**/app.js',
-    './plugins/server/**/*.js'
+    './server/**/*.js',
+    './server/**/*.json',
+    './common/**/*.js',
+    './common/**/*.json',
+    './plugins/**/*.js'
   ], function(){
     // This will need to change for gulp v4
     gulp.run('server:restart');

@@ -46,7 +46,7 @@ function windowsSpawn(executable, args, options){
 // Using casper with gulp and windows is not intuitive. Change this at your own
 // risk.
 gulp.task('test:integration', function (done) {
-  var tests = ['spec/integration'];
+  var tests = ['spec/integration','plugins/auth/spec/integration'];
   var casperChild;
   var onError = function(code){
     done(code);

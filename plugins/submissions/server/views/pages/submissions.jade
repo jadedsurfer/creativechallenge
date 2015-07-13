@@ -1,0 +1,19 @@
+extends ../layouts/layout
+block content
+    h2 Creative Challenge:
+    h1 #{challenge.title}
+    h4 Submissions due: #{challenge.submissionDueDate}
+    hr
+    ul.list-unstyled
+      for submission in challenge.submissions
+        li
+          div
+          img(src='#{submission.url}', width='800px')
+          p #{submission.submitter}
+            if user && user.username
+              form(method='post', action='/api/submissions/#{submission.id}/votes')
+                input(type='hidden', name='userId', value='#{user.id}')
+                //button Vote
+      else
+        li sorry, no submissions!
+

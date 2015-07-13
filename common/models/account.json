@@ -8,6 +8,9 @@
   "properties": {
     "name": {
       "type": "string"
+    },
+    "created": {
+      "type": "date"
     }
   },
   "validations": [],

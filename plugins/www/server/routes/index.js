@@ -23,7 +23,6 @@ module.exports = function(options, imports) {
     Challenge.findOne({where: {complete: false}}, function(err, challenge){
       if (err) next();
 
-
       view.jade(getPath('views/pages/index.jade'), {
         user: req.user,
         url: req.url,
@@ -37,34 +36,6 @@ module.exports = function(options, imports) {
         if (err) throw err;
         res.send(html);
       });
-    });
-  });
-
-  router.get('/challenges/:challengeId/submissions', function (req, res, next) {
-
-    var Challenge = app.models.Challenge;
-    var Submission = app.models.Submission;
-
-    Challenge.findOne({where: {_id: req.challengeId}}, function(err, challenge){
-      if (err) next();
-
-      challenge.submissions({}, function(err, submissions){
-        view.jade(getPath('views/pages/submissions.jade'), {
-          user: req.user,
-          url: req.url,
-          challenge: {
-            id: challenge.id,
-            title: challenge.title,
-            submissionDueDate:
-              moment(challenge.submissionDueDate).format('MMMM D, YYYY')
-          },
-          submissions: submissions
-        }, function(err, html){
-          if (err) throw err;
-          res.send(html);
-        });
-      });
-
     });
   });
 

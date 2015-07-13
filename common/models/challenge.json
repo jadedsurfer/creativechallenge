@@ -15,6 +15,9 @@
     },
     "votingCloseDate": {
       "type": "date"
+    },
+    "created": {
+      "type": "date"
     }
   },
   "validations": [],
@@ -22,7 +25,7 @@
     "submissions": {
       "type": "hasMany",
       "model": "Submission",
-      "foreignKey": "challenge"
+      "foreignKey": ""
     }
   },
   "acls": [],

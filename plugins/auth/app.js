@@ -18,7 +18,13 @@ module.exports = function(options, imports, register) {
   var config = {};
   try {
     debug('get providers');
-    config = require('../../server/providers.json');
+    if (process.env.NODE_ENV === 'development'){
+      config = require('../../server/providers.development.json');
+      debug('got providers for dev');
+    } else {
+      config = require('../../server/providers.json');
+      debug('got providers for prod');
+    }
   } catch (err) {
     debug.error(err);
     process.exit(1); // fatal
@@ -37,7 +43,7 @@ module.exports = function(options, imports, register) {
 
   debug('set up models for passport configuration');
   passportConfigurator.setupModels({
-    userModel: server.models.user,
+    userModel: server.models.User,
     userIdentityModel: server.models.userIdentity,
     userCredentialModel: server.models.userCredential
   });

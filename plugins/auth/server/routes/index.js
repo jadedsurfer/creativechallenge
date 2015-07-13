@@ -11,7 +11,7 @@ module.exports = function(options, imports) {
   var router = imports.Router();
 
   function getPath(file){
-    return path.join(__dirname, '../../', file);
+    return path.join(__dirname, '../', file);
   }
 
   debug('configure routes');
@@ -19,13 +19,13 @@ module.exports = function(options, imports) {
   router.get('/auth/account', ensureLoggedIn('/login'),
     function(req, res, next){
       res.redirect('/');
-    //view.jade(getPath('views/pages/loginProfiles.jade'), {
-    //  user: req.user,
-    //  url: req.url
-    //}, function(err, html){
-    //  if (err) throw err;
-    //  res.send(html);
-    //});
+      //view.jade(getPath('views/pages/loginProfiles.jade'), {
+      //  user: req.user,
+      //  url: req.url
+      //}, function(err, html){
+      //  if (err) throw err;
+      //  res.send(html);
+      //});
   });
 
   router.get('/link/account', ensureLoggedIn('/login'),

@@ -26,8 +26,8 @@ module.exports = function mountApps(server) {
  */
 function setUpRouter(router, staticMiddleware){
   var path = require('path');
-  //var browserify = require('browserify-middleware');
-  //var brfs = require('brfs');
+  var browserify = require('browserify-middleware');
+  var brfs = require('brfs');
 
   var clientPath = path.join(__dirname, '../..', '/client/');
   var clientRelativePath = '/client/';
@@ -36,12 +36,12 @@ function setUpRouter(router, staticMiddleware){
     res.sendFile(path.join(clientPath, 'spa-index.html'));
   });
 
-  //router.get('/js/build.js', browserify(
-  //  path.join(clientPath, 'spa/js/main.js'),
-  //  {
-  //    transform: [ brfs ]
-  //  }
-  //));
+  router.get('/js/build.js', browserify(
+    path.join(clientPath, 'spa/js/main.js'),
+    {
+      transform: [ brfs ]
+    }
+  ));
 
   router.use('/', staticMiddleware(clientRelativePath));
 

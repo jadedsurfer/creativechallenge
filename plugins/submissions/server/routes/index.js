@@ -7,8 +7,10 @@ module.exports = function(options, imports) {
 
   var app = imports.server;
   var router = imports.Router();
-  var view = require('consolidate');
-  var moment = require('moment');
+  var models = imports.models;
+  var moment = imports.moment;
+  var view = imports.consolidate;
+  var staticMW = imports.staticMiddleware;
 
   function getPath(file){
     return path.join(__dirname, '../', file);
@@ -18,7 +20,7 @@ module.exports = function(options, imports) {
 
   router.get('/challenges/:challengeId/submissions', function (req, res, next) {
 
-    var Challenge = app.models.Challenge;
+    var Challenge = models.Challenge;
 
     Challenge.findOne({
         where: {_id: req.challengeId},
@@ -51,7 +53,7 @@ module.exports = function(options, imports) {
 
   debug('serve static files from public dir');
   var pathToStatic = path.join(__dirname, '../../', 'public');
-  app.middleware('files', app.loopback.static(pathToStatic));
+  app.middleware('files', staticMW(pathToStatic));
 
   return router;
 };

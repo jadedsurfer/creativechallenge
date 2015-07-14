@@ -6,7 +6,7 @@ module.exports = function(options, imports, register) {
 
   var app = require('./server/routes')(options, imports);
 
-  debug('register auth');
+  debug('register submissions');
   register(null, {
     submissions: app
   });

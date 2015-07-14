@@ -7,13 +7,17 @@
     "consumes": [
       "debug",
       "server",
-      "Router"
+      "Router",
+      "models",
+      "moment",
+      "consolidate",
+      "staticMiddleware"
     ],
     "provides": [
       "submissions"
     ]
   },
   "dependencies": {
-    "consolidate": "^0.13.1"
+
   }
 }

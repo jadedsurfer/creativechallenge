@@ -5,24 +5,34 @@ module.exports = function(options, imports, register) {
   debug('start');
 
   var server = imports.server;
+  var sessionMW = imports.sessionMiddleware;
+  var cookieParserMW = imports.cookieParserMiddleware;
+  var datasources = imports.datasources;
 
-  var MongoStore = require('connect-mongo')(server.loopback.session);
+  var sessionOptions = options.sessionOptions;
+
+  debug('set up mongodb store');
+  var MongoStore = require('connect-mongo')(sessionMW);
 
   debug('use cookieParser before session middleware');
-  server.middleware('session:before', server.loopback.cookieParser(
-    process.env.cookieSecret
+  server.middleware('session:before', cookieParserMW(
+    options.cookieSecret || process.env.cookieSecret
   ));
 
-  debug('use loopback session for session middleware');
-  var storeOptions = server.datasources[options.datasource].settings;
+  debug('create store');
+  var storeOptions = datasources[options.datasource].settings;
   storeOptions.db = storeOptions.url;
   var store = new MongoStore(storeOptions);
-  server.middleware('session', server.loopback.session({
-    secret: process.env.sessionSecret,
-    saveUninitialized: true,
-    resave: true,
-    store: store
-  }));
+
+
+  debug('use session middleware');
+  if (!sessionOptions.secret) {
+    sessionOptions.secret = process.env.sessionSecret;
+  }
+
+  sessionOptions.store = store;
+
+  server.middleware('session', sessionMW(sessionOptions));
 
   debug('register nothing');
   register(null);

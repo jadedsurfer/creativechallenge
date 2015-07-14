@@ -6,10 +6,20 @@
   "plugin": {
     "consumes": [
       "debug",
-      "server"
+      "server",
+      "cookieParserMiddleware",
+      "sessionMiddleware",
+      "datasources"
     ],
     "provides": [
-    ]
+    ],
+    "datasource": "db",
+    "cookieSecret": null,
+    "sessionOptions": {
+      "saveUninitialized": true,
+      "resave": true,
+      "secret": null
+    }
   },
   "dependencies": {
     "connect-mongo": "^0.8.1"

@@ -31,6 +31,12 @@
       "packagePath": "./node_modules/architect-utils"
     },
     {
+      "packagePath": "./plugins/moment"
+    },
+    {
+      "packagePath": "./plugins/consolidate"
+    },
+    {
       "packagePath": "./plugins/www"
     },
     {
@@ -41,7 +47,13 @@
       "datasource": "Mongolab"
     },
     {
-      "packagePath": "./plugins/auth"
+      "packagePath": "./plugins/loopback-passport-auth",
+      "pages": {
+        "signup": {
+          "engine": "jade",
+          "path": "../../../../common/views/pages/signup.jade"
+        }
+      }
     }
   ]
 }

@@ -18,6 +18,9 @@
     },
     "created": {
       "type": "date"
+    },
+    "state": {
+      "type": "string"
     }
   },
   "validations": [],

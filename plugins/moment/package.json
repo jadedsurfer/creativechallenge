@@ -1,0 +1,17 @@
+{
+  "name": "moment",
+  "version": "0.0.1",
+  "main": "./app.js",
+  "private": true,
+  "plugin": {
+    "consumes": [
+      "debug"
+    ],
+    "provides": [
+      "moment"
+    ]
+  },
+  "dependencies": {
+    "moment": "^2.10.3"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "consolidate",
+  "version": "0.0.1",
+  "main": "./app.js",
+  "private": true,
+  "plugin": {
+    "consumes": [
+      "debug"
+    ],
+    "provides": [
+      "consolidate"
+    ]
+  },
+  "dependencies": {
+    "consolidate": "^0.13.1"
+  }
+}

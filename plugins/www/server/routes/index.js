@@ -1,14 +1,16 @@
 'use strict';
 
 module.exports = function(options, imports) {
-  var debug = imports.debug('www:auth');
+  var debug = imports.debug('apps:www');
 
   var path = require('path');
 
   var app = imports.server;
   var router = imports.Router();
-  var view = require('consolidate');
-  var moment = require('moment');
+  var staticMW = imports.staticMiddleware;
+  var view = imports.consolidate;
+  var moment = imports.moment;
+  var models = imports.models;
 
   function getPath(file){
     return path.join(__dirname, '../', file);
@@ -18,9 +20,9 @@ module.exports = function(options, imports) {
 
   router.get('/', function (req, res, next) {
 
-    var Challenge = app.models.Challenge;
+    var Challenge = models.Challenge;
 
-    Challenge.findOne({where: {complete: false}}, function(err, challenge){
+    Challenge.findOne({where: {state: 'active'}}, function(err, challenge){
       if (err) next();
 
       view.jade(getPath('views/pages/index.jade'), {
@@ -44,7 +46,7 @@ module.exports = function(options, imports) {
 
   debug('serve static files from public dir');
   var pathToStatic = path.join(__dirname, '../../', 'public');
-  app.middleware('files', app.loopback.static(pathToStatic));
+  app.middleware('files', staticMW(pathToStatic));
 
   return router;
 };

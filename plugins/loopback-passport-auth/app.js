@@ -5,6 +5,11 @@ module.exports = function(options, imports, register) {
   debug('start');
 
   var server = imports.server;
+  var models = imports.models;
+  var providers = options.providers;
+
+
+  var path = require('path');
 
   // Passport configurators..
   var loopbackPassport = require('loopback-component-passport');
@@ -14,15 +19,14 @@ module.exports = function(options, imports, register) {
   var flash= require('express-flash');
 
   // attempt to build the providers/passport config
-
   var config = {};
   try {
     debug('get providers');
     if (process.env.NODE_ENV === 'development'){
-      config = require('../../server/providers.development.json');
+      config = require(providers.development);
       debug('got providers for dev');
     } else {
-      config = require('../../server/providers.json');
+      config = require(providers.production);
       debug('got providers for prod');
     }
   } catch (err) {
@@ -32,7 +36,7 @@ module.exports = function(options, imports, register) {
 
   debug('use accessToken model for auth middleware');
   server.middleware('auth', server.loopback.token({
-    model: server.models.accessToken
+    model: models.AccessToken
   }));
 
   debug('init passport configuration');
@@ -43,10 +47,11 @@ module.exports = function(options, imports, register) {
 
   debug('set up models for passport configuration');
   passportConfigurator.setupModels({
-    userModel: server.models.User,
-    userIdentityModel: server.models.userIdentity,
-    userCredentialModel: server.models.userCredential
+    userModel: models.User,
+    userIdentityModel: models.UserIdentity,
+    userCredentialModel: models.UserCredential
   });
+
   for (var provider in config) {
     var providerConfig = config[provider];
     providerConfig.session = providerConfig.session !== false;

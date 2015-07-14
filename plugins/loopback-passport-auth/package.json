@@ -1,0 +1,53 @@
+{
+  "name": "loopback-passport-auth",
+  "version": "0.0.1",
+  "main": "./app.js",
+  "private": true,
+  "plugin": {
+    "consumes": [
+      "debug",
+      "server",
+      "Router",
+      "models"
+    ],
+    "provides": [
+      "auth"
+    ],
+    "providers": {
+      "development": "../../server/providers.development.json",
+      "production": "../../server/providers.json"
+    },
+    "pages": {
+      "loginProfiles": {
+        "engine": "jade",
+        "path": "../default-views/pages/loginProfiles.jade"
+      },
+      "linkedAccounts": {
+        "engine": "jade",
+        "path": "../default-views/pages/linkedAccounts.jade"
+      },
+      "local": {
+        "engine": "jade",
+        "path": "../default-views/pages/local.jade"
+      },
+      "signup": {
+        "engine": "jade",
+        "path": "../default-views/pages/signup.jade"
+      },
+      "login": {
+        "engine": "jade",
+        "path": "../default-views/pages/login.jade"
+      },
+      "link": {
+        "engine": "jade",
+        "path": "../default-views/pages/link.jade"
+      }
+    }
+  },
+  "dependencies": {
+    "connect-ensure-login": "^0.1.1",
+    "consolidate": "^0.13.1",
+    "loopback-component-passport": "^1.5.0",
+    "express-flash": "0.0.2"
+  }
+}

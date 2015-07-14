@@ -9,9 +9,12 @@ module.exports = function(options, imports) {
 
   var app = imports.server;
   var router = imports.Router();
+  var models = imports.models;
+
+  var pages = options.pages;
 
   function getPath(file){
-    return path.join(__dirname, '../', file);
+    return path.join(__dirname, file);
   }
 
   debug('configure routes');
@@ -19,7 +22,9 @@ module.exports = function(options, imports) {
   router.get('/auth/account', ensureLoggedIn('/login'),
     function(req, res, next){
       res.redirect('/');
-      //view.jade(getPath('views/pages/loginProfiles.jade'), {
+      var engine = pages.loginProfiles.engine;
+      var filePath = pages.loginProfiles.path;
+      //view[engine](getPath(filePath), {
       //  user: req.user,
       //  url: req.url
       //}, function(err, html){
@@ -30,7 +35,9 @@ module.exports = function(options, imports) {
 
   router.get('/link/account', ensureLoggedIn('/login'),
     function(req, res, next){
-    view.jade(getPath('views/pages/linkedAccounts.jade'), {
+      var engine = pages.linkedAccounts.engine;
+      var filePath = pages.linkedAccounts.path;
+      view[engine](getPath(filePath), {
       user: req.user,
       url: req.url
     }, function(err, html){
@@ -40,7 +47,9 @@ module.exports = function(options, imports) {
   });
 
   router.get('/local', function (req, res, next){
-    view.jade(getPath('views/pages/local.jade'), {
+    var engine = pages.local.engine;
+    var filePath = pages.local.path;
+    view[engine](getPath(filePath), {
       user: req.user,
       url: req.url
     }, function(err, html){
@@ -50,7 +59,9 @@ module.exports = function(options, imports) {
   });
 
   router.get('/signup', function (req, res, next){
-    view.jade(getPath('views/pages/signup.jade'), {
+    var engine = pages.signup.engine;
+    var filePath = pages.signup.path;
+    view[engine](getPath(filePath), {
       user: req.user,
       url: req.url,
       messages: {}
@@ -62,15 +73,19 @@ module.exports = function(options, imports) {
 
   router.post('/signup', function (req, res, next) {
 
-    var User = app.models.user;
+    debug('use User model for signup');
+    var User = models.User;
 
+    debug('prepare user record from info in req body');
     var newUser = {};
     newUser.email = req.body.email.toLowerCase();
     newUser.username = req.body.username.trim();
     newUser.password = req.body.password;
 
+    debug('create user');
     User.create(newUser, function (err, user) {
       if (err) {
+        debug.error('%O', err);
         req.flash('error', err.message);
         return res.redirect('back');
       } else {
@@ -78,8 +93,10 @@ module.exports = function(options, imports) {
         // that can be used to establish a login session. This function is
         // primarily used when users sign up, during which req.login() can
         // be invoked to log in the newly registered user.
+        debug('login user');
         req.login(user, function (err) {
           if (err) {
+            debug.error('%O', err);
             req.flash('error', err.message);
             return res.redirect('back');
           }
@@ -90,7 +107,9 @@ module.exports = function(options, imports) {
   });
 
   router.get('/login', function (req, res, next){
-    view.jade(getPath('views/pages/login.jade'), {
+    var engine = pages.login.engine;
+    var filePath = pages.login.path;
+    view[engine](getPath(filePath), {
       user: req.user,
       url: req.url,
       messages: {}
@@ -101,7 +120,9 @@ module.exports = function(options, imports) {
   });
 
   router.get('/link', function (req, res, next){
-    view.jade(getPath('views/pages/link.jade'), {
+    var engine = pages.link.engine;
+    var filePath = pages.link.path;
+    view[engine](getPath(filePath), {
       user: req.user,
       url: req.url
     }, function(err, html){

@@ -11,8 +11,6 @@ module.exports = function(options, imports) {
   var router = imports.Router();
   var models = imports.models;
 
-  var pages = options.pages;
-
   function getPath(file){
     return path.join(__dirname, file);
   }
@@ -22,8 +20,8 @@ module.exports = function(options, imports) {
   router.get('/auth/account', ensureLoggedIn('/login'),
     function(req, res, next){
       res.redirect('/');
-      var engine = pages.loginProfiles.engine;
-      var filePath = pages.loginProfiles.path;
+      var engine = options.loginProfiles.engine;
+      var filePath = options.loginProfiles.path;
       //view[engine](getPath(filePath), {
       //  user: req.user,
       //  url: req.url
@@ -35,8 +33,8 @@ module.exports = function(options, imports) {
 
   router.get('/link/account', ensureLoggedIn('/login'),
     function(req, res, next){
-      var engine = pages.linkedAccounts.engine;
-      var filePath = pages.linkedAccounts.path;
+      var engine = options.linkedAccounts.engine;
+      var filePath = options.linkedAccounts.path;
       view[engine](getPath(filePath), {
       user: req.user,
       url: req.url
@@ -47,8 +45,8 @@ module.exports = function(options, imports) {
   });
 
   router.get('/local', function (req, res, next){
-    var engine = pages.local.engine;
-    var filePath = pages.local.path;
+    var engine = options.local.engine;
+    var filePath = options.local.path;
     view[engine](getPath(filePath), {
       user: req.user,
       url: req.url
@@ -59,8 +57,8 @@ module.exports = function(options, imports) {
   });
 
   router.get('/signup', function (req, res, next){
-    var engine = pages.signup.engine;
-    var filePath = pages.signup.path;
+    var engine = options.signup.engine;
+    var filePath = options.signup.path;
     view[engine](getPath(filePath), {
       user: req.user,
       url: req.url,
@@ -107,8 +105,8 @@ module.exports = function(options, imports) {
   });
 
   router.get('/login', function (req, res, next){
-    var engine = pages.login.engine;
-    var filePath = pages.login.path;
+    var engine = options.login.engine;
+    var filePath = options.login.path;
     view[engine](getPath(filePath), {
       user: req.user,
       url: req.url,
@@ -120,8 +118,8 @@ module.exports = function(options, imports) {
   });
 
   router.get('/link', function (req, res, next){
-    var engine = pages.link.engine;
-    var filePath = pages.link.path;
+    var engine = options.link.engine;
+    var filePath = options.link.path;
     view[engine](getPath(filePath), {
       user: req.user,
       url: req.url

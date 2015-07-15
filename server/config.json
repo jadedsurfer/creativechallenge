@@ -48,11 +48,9 @@
     },
     {
       "packagePath": "./plugins/loopback-passport-auth",
-      "pages": {
-        "signup": {
-          "engine": "jade",
-          "path": "../../../../common/views/pages/signup.jade"
-        }
+      "signup": {
+        "engine": "jade",
+        "path": "../../../../common/views/pages/signup.jade"
       }
     }
   ]

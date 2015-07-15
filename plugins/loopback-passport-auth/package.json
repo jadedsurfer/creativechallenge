@@ -17,31 +17,29 @@
       "development": "../../server/providers.development.json",
       "production": "../../server/providers.json"
     },
-    "pages": {
-      "loginProfiles": {
-        "engine": "jade",
-        "path": "../default-views/pages/loginProfiles.jade"
-      },
-      "linkedAccounts": {
-        "engine": "jade",
-        "path": "../default-views/pages/linkedAccounts.jade"
-      },
-      "local": {
-        "engine": "jade",
-        "path": "../default-views/pages/local.jade"
-      },
-      "signup": {
-        "engine": "jade",
-        "path": "../default-views/pages/signup.jade"
-      },
-      "login": {
-        "engine": "jade",
-        "path": "../default-views/pages/login.jade"
-      },
-      "link": {
-        "engine": "jade",
-        "path": "../default-views/pages/link.jade"
-      }
+    "loginProfiles": {
+      "engine": "jade",
+      "path": "../default-views/pages/loginProfiles.jade"
+    },
+    "linkedAccounts": {
+      "engine": "jade",
+      "path": "../default-views/pages/linkedAccounts.jade"
+    },
+    "local": {
+      "engine": "jade",
+      "path": "../default-views/pages/local.jade"
+    },
+    "signup": {
+      "engine": "jade",
+      "path": "../default-views/pages/signup.jade"
+    },
+    "login": {
+      "engine": "jade",
+      "path": "../default-views/pages/login.jade"
+    },
+    "link": {
+      "engine": "jade",
+      "path": "../default-views/pages/link.jade"
     }
   },
   "dependencies": {

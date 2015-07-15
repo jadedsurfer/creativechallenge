@@ -1,0 +1,35 @@
+<ion-view view-title="{{challenge.title}}">
+  <ion-content>
+    <ion-list>
+      <div class="list card" ng-repeat="submission in submissions">
+
+        <div class="item item-image">
+          <img src="{{submission.url}}">
+        </div>
+
+        <div class="item">
+          <p>
+            <span style="font-size: 24pt">+{{submission.votes.length}}</span>
+            {{submission.submitter}}</p>
+          <p></p>
+        </div>
+
+        <div class="item tabs tabs-secondary tabs-icon-left">
+          <a class="tab-item" href="#">
+            <i class="icon ion-thumbsup"></i>
+            Vote
+          </a>
+          <a class="tab-item" href="#">
+            <i class="icon ion-chatbox"></i>
+            Comment
+          </a>
+          <!--<a class="tab-item" href="#">-->
+            <!--<i class="icon ion-share"></i>-->
+            <!--Share-->
+          <!--</a>-->
+        </div>
+
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

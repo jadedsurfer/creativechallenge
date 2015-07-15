@@ -8,6 +8,7 @@ var server = require('gulp-develop-server');
 var jasmine = require('gulp-jasmine');
 var karma = require('karma').server;
 var jshint = require('gulp-jshint');
+var shell = require('shelljs');
 
 // Starts server for tasks that require a server
 gulp.task('server:start', function(done){
@@ -18,8 +19,8 @@ gulp.task('server:start', function(done){
 
 gulp.task('server:restart', function(){
   server.changed(function(){
-    // This will need to change for gulp v4
-    gulp.run('test:unit:server');
+    testUnitServer();
+    return generateLBServices();
   });
 });
 
@@ -116,9 +117,13 @@ gulp.task('test:unit:tdd', function (done) {
 
 // Runs server unit tests with jasmine 2.1
 gulp.task('test:unit:server', function () {
+  return testUnitServer();
+});
+
+function testUnitServer(){
   return gulp.src('server/**/*.spec.js')
     .pipe(jasmine());
-});
+}
 
 // Runs lint tests with jshint
 gulp.task('test:lint', function(){
@@ -180,7 +185,23 @@ gulp.task('doc', function(done){
       .pipe(jsdoc.generator('./doc/dist'));
     done();
   });
-
-
-
 });
+
+function generateLBServices (){
+  console.log(shell.pwd());
+  if (!shell.which('lb-ng')) {
+    shell.echo('Sorry, this script requires loopback\'s lb-ng command');
+    return 1;
+  }
+
+  shell.cd('ionic');
+  if (shell.exec('lb-ng ../server/server.js www/js/common/lb.services.js').code !==0) {
+    shell.echo('Error: did not generate lb.services.js');
+    return 1;
+  } else {
+    shell.cd('..');
+  }
+
+  return null;
+
+}

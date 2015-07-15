@@ -3,7 +3,8 @@
     "sources": [
       "../common/models",
       "./models",
-      "../node_modules/loopback-component-passport/lib/models"
+      "../node_modules/loopback-component-passport/lib/models",
+      "../plugins/submissions/models"
     ]
   },
   "User": {

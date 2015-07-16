@@ -3,11 +3,15 @@ global submissionModule
 */
 
 submissionModule.controller('SubmissionsCtrl',
-  function($scope, $stateParams, Submission, User){
+  function($scope, $stateParams, Submission, User, AppAuth){
 
     var challengeId = $stateParams.id;
 
-    console.log(User.isAuthenticated());
+    if (AppAuth.currentUser) {
+      $scope.userPhotoUrl =
+        AppAuth.currentUser.profiles[1].profile.photos[0].value;
+    }
+
 
     Submission.find({ filter: {
       where: {challengeId: challengeId},

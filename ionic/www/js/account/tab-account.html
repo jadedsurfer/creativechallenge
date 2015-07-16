@@ -1,9 +1,14 @@
 <ion-view view-title="Account">
   <ion-content>
     <ion-list>
+      <p>{{currentUser.id}}</p>
     <ion-toggle  ng-model="settings.enableFriends">
         Enable Friends
     </ion-toggle>
+      <a class="item button button-full button-outline" ng-click="loginGoogle()">Sign in with Google</a>
+      <a class="item button button-full button-outline" ng-click="loginFacebook()">Sign in with Facebook</a>
+      <a class="item button button-full button-outline" ng-click="logout()">Sign Out</a>
+      <a class="item button button-full button-outline" ng-click="getAuthInfo()">Info</a>
     </ion-list>
   </ion-content>
 </ion-view>

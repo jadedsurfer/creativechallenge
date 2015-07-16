@@ -10,7 +10,8 @@
     "successRedirect": "/auth/account",
     "failureRedirect": "/login",
     "scope": ["email"],
-    "failureFlash": true
+    "failureFlash": true,
+    "session": true
   },
   "google-login": {
     "provider": "google",
@@ -24,6 +25,7 @@
     "successRedirect": "/auth/account",
     "failureRedirect": "/login",
     "scope": ["email", "profile"],
-    "failureFlash": true
+    "failureFlash": true,
+    "session": true
   }
 }

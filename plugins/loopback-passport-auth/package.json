@@ -17,6 +17,7 @@
       "development": "../../server/providers.development.json",
       "production": "../../server/providers.json"
     },
+    "accountRedirect": "/",
     "loginProfiles": {
       "engine": "jade",
       "path": "../default-views/pages/loginProfiles.jade"

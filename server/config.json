@@ -51,7 +51,8 @@
       "signup": {
         "engine": "jade",
         "path": "../../../../common/views/pages/signup.jade"
-      }
+      },
+      "accountRedirect": "/index.html#/tab/account"
     }
   ]
 }

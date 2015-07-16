@@ -17,11 +17,21 @@ module.exports = function(options, imports) {
 
   debug('configure routes');
 
+  app.get('/auth/current', function(req, res, next) {
+    if (!req.isAuthenticated || !req.isAuthenticated()) {
+      return res.status(200).json({});
+    }
+    //poor man's copy
+    var ret = JSON.parse(JSON.stringify(req.user));
+    delete ret.password;
+    res.status(200).json(ret);
+  });
+
   router.get('/auth/account', ensureLoggedIn('/login'),
     function(req, res, next){
-      res.redirect('/');
-      var engine = options.loginProfiles.engine;
-      var filePath = options.loginProfiles.path;
+      res.redirect(options.accountRedirect);
+      //var engine = options.loginProfiles.engine;
+      //var filePath = options.loginProfiles.path;
       //view[engine](getPath(filePath), {
       //  user: req.user,
       //  url: req.url

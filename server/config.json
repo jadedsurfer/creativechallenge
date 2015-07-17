@@ -26,6 +26,13 @@
       "disableStackTrace": false
     }
   },
+  "spa": {
+    "mountIndexHtmlToRoute": "/spa",
+    "mountBuildJsToRoute": "/js/build.js",
+    "relativePathToEntryHtml": "../../ionic/www/index.html",
+    "relativePathToEntryJs": "../../ionic/www/js/cc.module.js",
+    "staticRoot": "/ionic/www"
+  },
   "plugins": [
     {
       "packagePath": "./node_modules/architect-utils"

@@ -49,7 +49,7 @@ module.exports = function loadApps(server, cb) {
   system.on('error', function(err){
     if (err) {
       console.error('problem adding plugins to app');
-      console.log('successfully registered these plugins: %O',
+      console.log('successfully registered these plugins:',
         registeredServices );
       //console.error(err);
       return cb(err);

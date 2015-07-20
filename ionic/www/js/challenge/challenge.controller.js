@@ -1,9 +1,4 @@
-/*
-global challengeModule
- */
-
-challengeModule.controller('ChallengeCtrl',
-  function($scope, $stateParams, Challenge) {
+module.exports = function($scope, $stateParams, Challenge) {
     if ($stateParams.challengeId) {
       $scope.challenge = Challenge.get({id: $stateParams.challengeId});
     } else {
@@ -12,4 +7,4 @@ challengeModule.controller('ChallengeCtrl',
         $scope.challenge = data[0];
       });
     }
-});
+};

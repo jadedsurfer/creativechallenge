@@ -1,7 +1,3 @@
-/*
-global challengeModule
- */
-
-challengeModule.factory('Challenge', function($resource) {
+module.exports = function($resource) {
   return $resource('/api/challenges/:id');
-});
+};

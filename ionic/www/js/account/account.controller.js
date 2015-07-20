@@ -1,9 +1,8 @@
 /*
-global accountModule, window
+global window
  */
 
-accountModule.controller('AccountCtrl',
-  function($scope, User, AppAuth, $cookies, LoopBackAuth) {
+module.exports = function($scope, User, AppAuth, $cookies, LoopBackAuth) {
     $scope.settings = {
       enableFriends: true
     };
@@ -24,5 +23,5 @@ accountModule.controller('AccountCtrl',
       AppAuth.logout();
     };
 
-});
+};
 

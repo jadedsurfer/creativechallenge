@@ -1,5 +1,1 @@
-/*
-global dashModule
- */
-
-dashModule.controller('DashCtrl', function($scope) {});
+module.exports = function($scope) {};

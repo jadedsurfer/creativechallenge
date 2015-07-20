@@ -2,4 +2,8 @@
 global angular
 */
 
-var dashModule = angular.module('dashModule', []);
+var dashController = require('./dash.controller');
+
+var dashModule = angular.module('dashModule', [])
+
+  .controller('DashCtrl',dashController);

@@ -1,8 +1,4 @@
-/*
-global ccModule
-*/
-
-ccModule.config(function($stateProvider, $urlRouterProvider) {
+module.exports = function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -90,4 +86,4 @@ ccModule.config(function($stateProvider, $urlRouterProvider) {
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
-});
+};

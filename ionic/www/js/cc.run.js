@@ -1,8 +1,8 @@
 /*
-global ccModule, window, StatusBar, cordova
+global window, StatusBar, cordova
  */
 
-ccModule.run(function($ionicPlatform) {
+module.exports = function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default
     // (remove this to show the accessory bar above
@@ -18,4 +18,4 @@ ccModule.run(function($ionicPlatform) {
       StatusBar.styleLightContent();
     }
   });
-});
+};

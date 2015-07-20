@@ -2,4 +2,8 @@
 global angular
 */
 
-var authModule = angular.module('authModule', ['lbServices']);
+var authService = require('./auth.service');
+
+var authModule = angular.module('authModule', ['lbServices'])
+
+.factory('AppAuth', authService);

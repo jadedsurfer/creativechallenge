@@ -9,13 +9,13 @@
  */
 module.exports = function mountSPA(server) {
 
-  var setUpRouter = require('./spa/index').setUpRouter;
+  var setUpSpa = require('./spa/index').setUpSpa;
 
   var router = server.loopback.Router();
   var staticMiddleware = server.loopback.static;
   var options = server.get('spa');
 
-  server.use('/', setUpRouter(router, staticMiddleware, options));
+  server.use('/', setUpSpa(router, staticMiddleware, options));
 
 };
 

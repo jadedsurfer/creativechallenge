@@ -1,7 +1,3 @@
-/*
-global chatModule
- */
-
-chatModule.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+module.exports = function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
-});
+};

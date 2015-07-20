@@ -1,9 +1,4 @@
-/*
-global submissionModule
-*/
-
-submissionModule.controller('SubmissionsCtrl',
-  function($scope, $stateParams, Submission, User, AppAuth){
+module.exports = function($scope, $stateParams, Submission, User, AppAuth){
 
     var challengeId = $stateParams.id;
 
@@ -22,4 +17,4 @@ submissionModule.controller('SubmissionsCtrl',
         $scope.challenge = submissions[0].challenge;
         $scope.submissions = submissions;
     });
-});
+};

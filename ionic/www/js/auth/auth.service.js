@@ -1,9 +1,8 @@
 /*
-global authModule, window
+global window
  */
 
-authModule.factory('AppAuth',
-  function($cookies, User, LoopBackAuth, $http, $timeout) {
+module.exports = function($cookies, User, LoopBackAuth, $http, $timeout) {
     return {
       login: function(data, cb) {
         var self = this;
@@ -65,7 +64,8 @@ authModule.factory('AppAuth',
               LoopBackAuth.save();
               self.currentUser = response.data;
               var profile = self.currentUser && self.currentUser.profiles &&
-                self.currentUser.profiles.length && self.currentUser.profiles[0];
+                self.currentUser.profiles.length &&
+                self.currentUser.profiles[0];
               if (profile) {
                 self.currentUser.name = profile.profile.name;
               }
@@ -82,4 +82,4 @@ authModule.factory('AppAuth',
         }
       }
   };
-});
+};

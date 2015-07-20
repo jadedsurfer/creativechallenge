@@ -1,7 +1,3 @@
-/*
-global challengeModule
-*/
-
-challengeModule.controller('ChallengesCtrl', function($scope, Challenge){
+module.exports = function($scope, Challenge){
   $scope.challenges = Challenge.query();
-});
+};

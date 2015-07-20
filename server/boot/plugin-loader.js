@@ -61,7 +61,7 @@ module.exports = function loadApps(server, cb) {
 //    console.log(sys);
 //    console.log(sys.services.server.loopback().middleware);
     process.nextTick(function(){
-      console.log('successfully registered these plugins',
+      console.log('successfully registered these plugins: \n',
         registeredServices );
     });
     server._plugins = sys;

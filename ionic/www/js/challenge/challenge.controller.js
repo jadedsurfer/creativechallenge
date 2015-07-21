@@ -1,10 +1,18 @@
-module.exports = function($scope, $stateParams, Challenge) {
+module.exports = function($scope, $stateParams, ActiveChallenge) {
     if ($stateParams.challengeId) {
-      $scope.challenge = Challenge.get({id: $stateParams.challengeId});
+
+      $scope.challenge =
+        ActiveChallenge.getChallengeById($stateParams.challengeId,
+          function(challenge){
+          $scope.challenge = challenge;
+        });
+
     } else {
-      var activeChallenges = Challenge.query({state: 'active'}, function(data){
-        console.log(data);
-        $scope.challenge = data[0];
+
+       ActiveChallenge.getActiveChallenge(function(challenge){
+        $scope.challenge = challenge;
       });
+
     }
+
 };

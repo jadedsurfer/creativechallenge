@@ -1,3 +1,6 @@
 module.exports = function($scope, Challenge){
-  $scope.challenges = Challenge.query();
+  Challenge.find().$promise
+    .then(function(challenges){
+      $scope.challenges = challenges;
+    });
 };

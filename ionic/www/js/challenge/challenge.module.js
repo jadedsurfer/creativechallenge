@@ -6,9 +6,9 @@ var challengeService = require('./challenge.service');
 var challengesController = require('./challenges.controller');
 var challengeController = require('./challenge.controller');
 
-var challengeModule = angular.module('challengeModule', ['ngResource'])
+var challengeModule = angular.module('challengeModule', ['lbServices'])
 
-.factory('Challenge', challengeService)
+.factory('ActiveChallenge', challengeService)
 
 .controller('ChallengesCtrl', challengesController)
 

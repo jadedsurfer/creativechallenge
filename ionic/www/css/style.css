@@ -3,3 +3,9 @@
 .center {
   text-align: center;
 }
+
+.submission {
+  max-width: 800px;
+  max-height: 600px;
+  object-fit: contain;
+}

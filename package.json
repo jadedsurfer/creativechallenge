@@ -14,6 +14,7 @@
   "dependencies": {
     "architect": "^0.1.11",
     "architect-utils": "0.0.6",
+    "aws-sdk": "^2.1.39",
     "backbone": "^1.1.2",
     "backbone.controller": "^0.3.1",
     "body-parser": "^1.10.0",

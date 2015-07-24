@@ -9,8 +9,6 @@ var ccModule = angular.module('cc', [
   'ionic',
   'accountModule',
   'challengeModule',
-  'chatModule',
-  'dashModule',
   's3UploadModule',
   'submissionModule'
 ])
@@ -22,8 +20,8 @@ var ccModule = angular.module('cc', [
 require('./auth/auth.module');
 require('./account/account.module');
 
-require('./chat/chat.module');
-require('./dash/dash.module');
+//require('./chat/chat.module');
+//require('./dash/dash.module');
 
 window.evaporateOptions = {
   signerUrl: '/signer',

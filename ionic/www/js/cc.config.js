@@ -15,15 +15,15 @@ module.exports = function($stateProvider, $urlRouterProvider) {
 
     // Each tab has its own nav history stack:
 
-    .state('tab.dash', {
-      url: '/dash',
-      views: {
-        'tab-dash': {
-          templateUrl: 'js/dash/tab-dash.html',
-          controller: 'DashCtrl'
-        }
-      }
-    })
+    //.state('tab.dash', {
+    //  url: '/dash',
+    //  views: {
+    //    'tab-dash': {
+    //      templateUrl: 'js/dash/tab-dash.html',
+    //      controller: 'DashCtrl'
+    //    }
+    //  }
+    //})
 
     .state('tab.challenge', {
       url: '/challenge',
@@ -35,24 +35,24 @@ module.exports = function($stateProvider, $urlRouterProvider) {
       }
     })
 
-    .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'js/chat/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'js/chat/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+    //.state('tab.chats', {
+    //  url: '/chats',
+    //  views: {
+    //    'tab-chats': {
+    //      templateUrl: 'js/chat/tab-chats.html',
+    //      controller: 'ChatsCtrl'
+    //    }
+    //  }
+    //})
+    //.state('tab.chat-detail', {
+    //  url: '/chats/:chatId',
+    //  views: {
+    //    'tab-chats': {
+    //      templateUrl: 'js/chat/chat-detail.html',
+    //      controller: 'ChatDetailCtrl'
+    //    }
+    //  }
+    //})
 
     .state('tab.submissions', {
       url: '/challenges/:id/submissions',
@@ -84,6 +84,6 @@ module.exports = function($stateProvider, $urlRouterProvider) {
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/challenge');
 
 };

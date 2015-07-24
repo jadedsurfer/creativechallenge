@@ -13,6 +13,9 @@
     "submissionDueDate": {
       "type": "date"
     },
+    "formattedSubmissionDueDate": {
+      "type": "string"
+    },
     "votingCloseDate": {
       "type": "date"
     },

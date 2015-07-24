@@ -45,6 +45,9 @@
       "packagePath": "./plugins/consolidate"
     },
     {
+      "packagePath": "./plugins/aws-signer"
+    },
+    {
       "packagePath": "./plugins/www"
     },
     {

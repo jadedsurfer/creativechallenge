@@ -16,5 +16,34 @@
         </ul>
       </div>
     </div>
+
+    <div ng-controller="s3UploadCtrl">
+      <div ng-hide="evaData.ready">upload is not available</div>
+      <div ng-show="evaData.ready">
+        <input type="file" multiple="multiple" evaporate eva-model="evaData">
+        <ul>
+          <li ng-repeat="file in evaData.files">
+            <span>{{file.name}}</span>
+            <span ng-show="file.completed"> uploaded
+              <!--, <a ng-href="{{file.url}}" target="_blank">open it</a> in new tab -->
+            </span>
+            <div class="progress" ng-hide="file.completed">
+              <div class="progress-indicator" style="width: {{file.progress}}%;"></div>
+              <div class="progress-value">
+                <span>{{file.progress || 0}}%</span>
+                <span ng-show="file.timeLeft">({{file.timeLeft}} seconds left)</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    <!--<div-->
+      <!--class="btn btn-primary btn-upload"-->
+      <!--upload-button-->
+      <!--url="/upload"-->
+      <!--on-success="onSuccess(response)"-->
+      <!-- >Upload</div>-->
+
   </ion-content>
 </ion-view>

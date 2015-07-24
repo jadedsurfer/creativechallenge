@@ -10,6 +10,8 @@ module.exports = function(Submission) {
 
   Submission.definition.properties.created.default = Date.now;
 
+  Submission.definition.properties.submitted.default = Date.now;
+
   Submission.afterRemote('find', function(ctx, submissions, next){
     submissions.forEach(function(submission){
       params.Key = submission.url;

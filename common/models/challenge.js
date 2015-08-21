@@ -22,6 +22,7 @@ module.exports = function(Challenge) {
         params.Key = currentSubmission.url;
         s3.getSignedUrl('getObject', params, assignUrl(currentSubmission));
       }
+      console.log(jsonChallenge);
       return jsonChallenge;
   }
 
@@ -35,7 +36,7 @@ module.exports = function(Challenge) {
         challenge.formattedSubmissionDueDate =
           moment(challenge.submissionDueDate).format('MMMM D, YYYY');
       } catch (err) {
-
+        console.error(err);
       }
     });
     next();
@@ -50,10 +51,8 @@ module.exports = function(Challenge) {
       }
 
     } catch (err) {
-
+      console.error(err);
     }
-
-
     next();
   });
 
@@ -65,10 +64,8 @@ module.exports = function(Challenge) {
         ctx.result = processSubmissions(challenge);
       }
     } catch (err){
-
+      console.error(err);
     }
-
-
     next();
   });
 

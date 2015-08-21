@@ -1,49 +1,79 @@
 <ion-view view-title="Creative Challenge">
+  <ion-nav-buttons side="secondary" ng-show="currentUser.signedIn">
+  </ion-nav-buttons>
+
   <ion-content class="padding">
     <div class="list card">
       <div class="item item-body">
         <h1 class="center">
-          <a href="/index.html#/tab/challenges/{{challenge.id}}/submissions">
-            {{challenge.title}}
-          </a>
+          <!--<a href="/index.html#/tab/challenges/{{activeChallenge.id}}/submissions">-->
+            {{activeChallenge.title}}
+          <!--</a>-->
         </h1>
         <h4 class="center">
-          Submissions due: {{challenge.formattedSubmissionDueDate}}
+          Submissions due:
         </h4>
+        <h3 class="center">
+          {{activeChallenge.formattedSubmissionDueDate}}
+        </h3>
+        <hr/>
         <ul>
-          <li>One submission (photograph, painting, drawing, sculpture) per challenge.</li>
-          <li>Submission must be substantially original though Creative Commons (CC0, No Rights Reserved) work may be incorporated.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div ng-controller="s3UploadCtrl">
-      <div ng-hide="evaData.ready">upload is not available</div>
-      <div ng-show="evaData.ready">
-        <input type="file" multiple="multiple" evaporate eva-model="evaData">
-        <ul>
-          <li ng-repeat="file in evaData.files">
-            <span>{{file.name}}</span>
-            <span ng-show="file.completed"> uploaded
-              <!--, <a ng-href="{{file.url}}" target="_blank">open it</a> in new tab -->
-            </span>
-            <div class="progress" ng-hide="file.completed">
-              <div class="progress-indicator" style="width: {{file.progress}}%;"></div>
-              <div class="progress-value">
-                <span>{{file.progress || 0}}%</span>
-                <span ng-show="file.timeLeft">({{file.timeLeft}} seconds left)</span>
-              </div>
-            </div>
+          <li>One submission (photograph, painting, drawing, sculpture) per
+            challenge.
+          </li>
+          <li>Submission must be substantially original though Creative Commons
+            (CC0, No Rights Reserved) work may be incorporated.
           </li>
         </ul>
+        <hr/>
+        <div ng-controller="s3UploadCtrl" class="center">
+          <div ng-hide="currentUser.canUpload">
+            Sign in to upload your submission
+            <a class="item button button-positive"
+               ng-click="loginGoogle()">Google</a>
+            <a class="item button button-positive"
+               ng-click="loginFacebook()">Facebook</a>
+          </div>
+          <div ng-show="currentUser.canUpload">
+            <div ng-hide="evaData.ready">upload is not available</div>
+            <div ng-show="evaData.ready">
+              <input type="file" accept="image/jpeg,image/png" evaporate
+                     eva-model="evaData">
+              <ul>
+                <li ng-repeat="file in evaData.files">
+                  <span>{{file.name}}</span>
+                <span ng-show="file.completed"> uploaded
+                  <!--, <a ng-href="{{file.url}}" target="_blank">open it</a> in new tab -->
+                </span>
+
+                  <div class="progress" ng-hide="file.completed">
+                    <div class="progress-indicator"
+                         style="width: {{file.progress}}%;"></div>
+                    <div class="progress-value">
+                      <span>{{file.progress || 0}}%</span>
+                      <span ng-show="file.timeLeft">({{file.timeLeft}} seconds left)</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-    <!--<div-->
-      <!--class="btn btn-primary btn-upload"-->
-      <!--upload-button-->
-      <!--url="/upload"-->
-      <!--on-success="onSuccess(response)"-->
-      <!-- >Upload</div>-->
-
+    </div>
+    <div class="list card">
+      <div class="item item-body">
+        <h2 class="center">
+          Previous Challenges
+        </h2>
+        <ul>
+          <li ng-repeat="challenge in challenges">
+            <a href="/index.html#/tab/challenges/{{challenge.id}}/submissions">
+              {{challenge.title}}
+            </a>
+          </li>
+        </ul>
+        </div>
+    </div>
   </ion-content>
 </ion-view>

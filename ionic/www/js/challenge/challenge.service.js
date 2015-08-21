@@ -4,7 +4,8 @@ module.exports = function(Challenge) {
     getActiveChallenge: function(cb) {
       Challenge.findOne({
         filter: {
-          where: {state: 'active'}
+          where: {state: 'active'},
+          include: {submissions: 'votes'}
         }
       }).$promise
         .then(cb);
@@ -13,6 +14,28 @@ module.exports = function(Challenge) {
       Challenge.findById(
         id
       ).$promise
+        .then(cb);
+    },
+    getPastChallenges: function(cb){
+      Challenge.find({
+        filter: {
+          where: {
+            'or': [
+              {state: 'complete'},
+              {state: 'voting'}
+            ]
+          }
+        }
+      }).$promise
+        .then(cb);
+    },
+    getChallengeWithSubmissions: function(challengeId, cb){
+      Challenge.findOne({
+        filter: {
+          where: {id: challengeId},
+          include: {submissions: 'votes'}
+        }
+      }).$promise
         .then(cb);
     }
   };

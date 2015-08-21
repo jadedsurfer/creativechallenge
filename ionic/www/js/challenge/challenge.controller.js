@@ -1,36 +1,32 @@
 module.exports = function(
-  $scope, $stateParams, ActiveChallenge, Submission, AppAuth) {
+  $scope, $stateParams, ChallengeService, Submission, CurrentUser) {
     if ($stateParams.challengeId) {
 
       $scope.challenge =
-        ActiveChallenge.getChallengeById($stateParams.challengeId,
+        ChallengeService.getChallengeById($stateParams.challengeId,
           function(challenge){
           $scope.challenge = challenge;
         });
 
     } else {
 
-       ActiveChallenge.getActiveChallenge(function(challenge){
+      ChallengeService.getActiveChallenge(function(challenge){
         $scope.challenge = challenge;
       });
 
     }
 
-  AppAuth.ensureHasCurrentUser(function(user) {
-    if (user && user.email && user.id) {
-      $scope.currentUser =  user;
-    } else {
-      $scope.currentUser = {anonymous: true, id: null};
-    }
+  CurrentUser.get(function(currentUser) {
+      $scope.currentUser =  currentUser;
   });
 
   $scope.$on('fileUploaded', function(event, file){
-    if ($scope.currentUser.id !== null){
+    if ($scope.currentUser.profile.id !== null){
       Submission.create({
-        userId: $scope.currentUser.id,
+        userId: $scope.currentUser.profile.id,
         url: file.file.path_,
         challengeId: $scope.challenge.id,
-        submitter: $scope.currentUser.email
+        submitter: $scope.currentUser.profile.email
       }).$promise
         .then(function(submission){
           console.log(submission);

@@ -63,7 +63,8 @@
         "engine": "jade",
         "path": "../../../../common/views/pages/signup.jade"
       },
-      "accountRedirect": "/index.html#/tab/account"
+      "accountRedirect": "/index.html#/tab/challenges",
+      "logoutRedirect": "/index.html#/tab/challenges"
     }
   ]
 }

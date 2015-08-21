@@ -1,0 +1,52 @@
+<ion-view view-title="{{challenge.title}}">
+  <ion-content>
+    <ion-list>
+      <h2 ng-show="submissionsCount === 0" class="center">
+        No submissions yet!
+      </h2>
+      <div class="list card" ng-repeat="submission in submissions"
+           scroll="true">
+
+        <div ng-controller="VoteDetailCtrl">
+
+          <div class="item item-image">
+            <img src="{{submission.url}}" class="submission">
+          </div>
+
+          <div class="item">
+            <!--<img src="{{userPhotoUrl}}"/>-->
+            <p>
+              <span style="font-size: 24pt" ng-show="submission.votes.length > 0">
+                +{{submission.votes.length}}</span>
+              {{submission.submitter}}
+            </p>
+          </div>
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#" ng-click="addVote(submission)"
+               ng-show="canVote && signedIn && votingOpen">
+              <i class="icon ion-thumbsup"></i>
+              Vote
+            </a>
+            <a class="tab-item" href="#/tab/challenges"
+               ng-hide="signedIn">
+              Sign in to vote
+            </a>
+            <!--<a class="tab-item" href="#">-->
+              <!--<i class="icon ion-chatbox"></i>-->
+              <!--Comment-->
+            <!--</a>-->
+            <!--<a class="tab-item" href="#">-->
+            <!--<i class="icon ion-share"></i>-->
+            <!--Share-->
+            <!--</a>-->
+          </div>
+
+        </div>
+
+
+
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

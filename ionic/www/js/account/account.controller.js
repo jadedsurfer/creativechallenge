@@ -2,25 +2,22 @@
 global window
  */
 
-module.exports = function($scope, User, AppAuth, $cookies, LoopBackAuth) {
-    $scope.settings = {
-      enableFriends: true
-    };
+module.exports = function($scope, CurrentUser) {
 
-    AppAuth.ensureHasCurrentUser(function(user) {
-      $scope.currentUser = (user && user.email) ? user : {anonymous: true};
+    CurrentUser.get(function(currentUser) {
+      $scope.currentUser = currentUser;
     });
 
-    $scope.loginGoogle = function() {
-      window.location = '/auth/google';
-    };
+  $scope.loginGoogle = function() {
+    window.location = '/auth/google';
+  };
 
-    $scope.loginFacebook = function() {
-      window.location = '/auth/facebook';
-    };
+  $scope.loginFacebook = function() {
+    window.location = '/auth/facebook';
+  };
 
     $scope.logout = function() {
-      AppAuth.logout();
+      CurrentUser.logout();
     };
 
 };

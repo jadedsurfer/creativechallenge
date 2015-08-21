@@ -5,9 +5,7 @@ global angular
 var accountController = require('./account.controller');
 
 var accountModule = angular.module('accountModule', [
-  'authModule',
-  'ngCookies',
-  'lbServices'
+  'currentUserModule'
 ])
 
 .controller('AccountCtrl', accountController);

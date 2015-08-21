@@ -21,7 +21,7 @@ module.exports = function(Challenge) {
       for(var i = 0; i < jsonChallenge.submissions.length; i++){
         var currentSubmission = jsonChallenge.submissions[i];
         params.Key = currentSubmission.url;
-        currentSubmission.url = s3.getSignedUrl('getObject', params);
+        s3.getSignedUrl('getObject', params, assignUrl(currentSubmission));
       }
       console.log(jsonChallenge);
       return jsonChallenge;

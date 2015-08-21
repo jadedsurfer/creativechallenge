@@ -141,7 +141,7 @@ module.exports = function(options, imports) {
 
   router.get('/auth/logout', function (req, res, next) {
     req.logout();
-    res.redirect('/');
+    res.redirect(options.logoutRedirect);
   });
 
 

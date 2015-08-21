@@ -2,7 +2,7 @@
 global window
  */
 
-module.exports = function($cookies, User, LoopBackAuth, $http, $timeout) {
+module.exports = function($cookies, User, LoopBackAuth, $http) {
     return {
       login: function(data, cb) {
         var self = this;

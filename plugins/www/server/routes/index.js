@@ -20,25 +20,8 @@ module.exports = function(options, imports) {
 
   router.get('/', function (req, res, next) {
 
-    var Challenge = models.Challenge;
+    res.redirect('/index.html');
 
-    Challenge.findOne({where: {state: 'active'}}, function(err, challenge){
-      if (err) next();
-
-      view.jade(getPath('views/pages/index.jade'), {
-        user: req.user,
-        url: req.url,
-        challenge: {
-          id: challenge.id,
-          title: challenge.title,
-          submissionDueDate:
-            moment(challenge.submissionDueDate).format('MMMM D, YYYY')
-        }
-      }, function(err, html){
-        if (err) throw err;
-        res.send(html);
-      });
-    });
   });
 
   debug('.use router');

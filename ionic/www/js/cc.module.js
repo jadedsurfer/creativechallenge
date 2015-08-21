@@ -10,7 +10,9 @@ var ccModule = angular.module('cc', [
   'accountModule',
   'challengeModule',
   's3UploadModule',
-  'submissionModule'
+  'submissionModule',
+  'voteModule',
+  'currentUserModule'
 ])
 
 .run(require('./cc.run'))
@@ -19,9 +21,6 @@ var ccModule = angular.module('cc', [
 
 require('./auth/auth.module');
 require('./account/account.module');
-
-//require('./chat/chat.module');
-//require('./dash/dash.module');
 
 window.evaporateOptions = {
   signerUrl: '/signer',
@@ -39,6 +38,8 @@ require('../lib/angular-evaporate/lib/angular-evaporate');
 
 require('./challenge/challenge.module');
 require('./submission/submission.module');
+require('./vote/vote.module');
+require('./current-user/current-user.module');
 
 
 

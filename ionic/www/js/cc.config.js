@@ -15,60 +15,32 @@ module.exports = function($stateProvider, $urlRouterProvider) {
 
     // Each tab has its own nav history stack:
 
-    //.state('tab.dash', {
-    //  url: '/dash',
-    //  views: {
-    //    'tab-dash': {
-    //      templateUrl: 'js/dash/tab-dash.html',
-    //      controller: 'DashCtrl'
-    //    }
-    //  }
-    //})
-
     .state('tab.challenge', {
-      url: '/challenge',
+      url: '/challenges',
       views: {
         'tab-challenge': {
           templateUrl: 'js/challenge/tab-challenge.html',
-          controller: 'ChallengeCtrl'
+          controller: 'ChallengesCtrl'
         }
       }
     })
-
-    //.state('tab.chats', {
-    //  url: '/chats',
-    //  views: {
-    //    'tab-chats': {
-    //      templateUrl: 'js/chat/tab-chats.html',
-    //      controller: 'ChatsCtrl'
-    //    }
-    //  }
-    //})
-    //.state('tab.chat-detail', {
-    //  url: '/chats/:chatId',
-    //  views: {
-    //    'tab-chats': {
-    //      templateUrl: 'js/chat/chat-detail.html',
-    //      controller: 'ChatDetailCtrl'
-    //    }
-    //  }
-    //})
 
     .state('tab.submissions', {
       url: '/challenges/:id/submissions',
       views: {
-        'tab-submissions': {
-          templateUrl: 'js/submission/tab-submissions.html',
-          controller: 'SubmissionsCtrl'
+        'tab-challenge': {
+          templateUrl: 'js/vote/tab-vote.html',
+          controller: 'VotesCtrl'
         }
       }
     })
-    .state('tab.submission-detail', {
-      url: '/submissions/:submissionId',
+
+    .state('tab.vote', {
+      url: '/activechallenge/submissions',
       views: {
-        'tab-submissions': {
-          templateUrl: 'js/submission/submission-detail.html',
-          controller: 'SubmissionDetailCtrl'
+        'tab-vote': {
+          templateUrl: 'js/vote/tab-vote.html',
+          controller: 'VotesCtrl'
         }
       }
     })
@@ -84,6 +56,6 @@ module.exports = function($stateProvider, $urlRouterProvider) {
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/challenge');
+  $urlRouterProvider.otherwise('/tab/challenges');
 
 };

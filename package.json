@@ -1,6 +1,6 @@
 {
   "name": "creative-challenge",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "node": "0.12.x"
   },
@@ -9,14 +9,13 @@
     "postinstall": "cd ionic && bower install",
     "start": "node server/server.js",
     "pretest": "jshint .",
-    "test": "gulp test"
+    "test": "gulp test",
+    "dev": "gulp"
   },
   "dependencies": {
     "architect": "^0.1.11",
     "architect-utils": "0.0.6",
     "aws-sdk": "^2.1.39",
-    "backbone": "^1.1.2",
-    "backbone.controller": "^0.3.1",
     "body-parser": "^1.10.0",
     "brfs": "^1.4.0",
     "browserify-middleware": "^6.0.0",

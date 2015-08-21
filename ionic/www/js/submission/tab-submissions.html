@@ -1,37 +1,41 @@
-<ion-view view-title="{{challenge.title}}">
+<ion-view view-title="{{challengeTitle}}">
   <ion-content>
+    <h2 ng-show="submissionsCount === 0" class="center">
+      No submissions yet! :-(
+    </h2>
     <ion-list>
-      <div class="list card" ng-repeat="submission in submissions" scroll="true">
+      <div class="list card" ng-repeat="submission in submissions"
+           scroll="true">
 
-        <div ng-controller="SubmissionDetailCtrl">
+        <div>
 
           <div class="item item-image">
             <img src="{{submission.url}}" class="submission">
           </div>
 
           <div class="item">
-            <img src="{{userPhotoUrl}}"/>
+            <!--<img src="{{userPhotoUrl}}"/>-->
             <p>
               <span style="font-size: 24pt">+{{submission.votes.length}}</span>
               {{submission.submitter}}</p>
             <p></p>
           </div>
 
-          <div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#" ng-click="addVote(submission)"
-               ng-hide="hideVoting">
-              <i class="icon ion-thumbsup"></i>
-              Vote
-            </a>
-            <a class="tab-item" href="#">
-              <i class="icon ion-chatbox"></i>
-              Comment
-            </a>
+          <!--<div class="item tabs tabs-secondary tabs-icon-left">-->
+            <!--<a class="tab-item" href="#" ng-click="addVote(submission)"-->
+               <!--ng-hide="hideVoting">-->
+              <!--<i class="icon ion-thumbsup"></i>-->
+              <!--Vote-->
+            <!--</a>-->
+            <!--<a class="tab-item" href="#">-->
+              <!--<i class="icon ion-chatbox"></i>-->
+              <!--Comment-->
+            <!--</a>-->
             <!--<a class="tab-item" href="#">-->
             <!--<i class="icon ion-share"></i>-->
             <!--Share-->
             <!--</a>-->
-          </div>
+          <!--</div>-->
 
         </div>
 

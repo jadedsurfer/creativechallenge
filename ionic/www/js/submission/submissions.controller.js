@@ -1,20 +1,10 @@
-module.exports = function($scope, $stateParams, Submission, User, AppAuth){
+module.exports = function($scope, $stateParams, Submission, CurrentUser){
 
   var challengeId = $stateParams.id;
+  $scope.challengeTitle = $stateParams.challengeTitle || 'Submissions';
 
-  AppAuth.ensureHasCurrentUser(function(user) {
-    if (user && user.email && user.id) {
-      $scope.currentUser =  user;
-      if (user.profiles[1].profile.photos[0]) {
-        $scope.userPhotoUrl =
-          user.profiles[1].profile.photos[0].value;
-      } else {
-        $scope.userPhotoUrl = '';
-      }
-    } else {
-      $scope.currentUser = {anonymous: true, id: null};
-      $scope.hideVoting = true;
-    }
+  CurrentUser.get(function(currentUser) {
+    $scope.currentUser = currentUser;
   });
 
   Submission.find({ filter: {
@@ -22,9 +12,13 @@ module.exports = function($scope, $stateParams, Submission, User, AppAuth){
     include: ['votes', 'challenge']
   }}).$promise
     .then(function(submissions){
-      //console.log(submissions);
-      $scope.challenge = submissions[0].challenge;
-      $scope.submissions = submissions;
+      if (submissions.length === 0) {
+        $scope.submissions = submissions;
+      } else {
+        $scope.submissions = submissions;
+      }
+      $scope.submissionsCount = submissions.length;
+
   }, function(err){
     console.log(err);
   });

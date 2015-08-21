@@ -11,7 +11,6 @@ module.exports = function(Challenge) {
   function assignUrl(submission){
     return function(err, url){
       submission.url = url;
-      console.log(submission.url);
       return submission;
     };
   }
@@ -23,7 +22,6 @@ module.exports = function(Challenge) {
         params.Key = currentSubmission.url;
         s3.getSignedUrl('getObject', params, assignUrl(currentSubmission));
       }
-      console.log(jsonChallenge);
       return jsonChallenge;
   }
 

@@ -74,7 +74,7 @@ function setUpRouter(router, staticMiddleware, options){
 
   router.get(
     options.mountBuildJsToRoute,
-    exports.serveHtml(options.mountBuildJsToRoute)
+    exports.serveHtml('../../ionic/www/js/build.js')
     //exports.serveBrowserified(options.pathToEntryJs)
   );
 

@@ -2307,18 +2307,6 @@
         }
       }
     },
-    "fsevents": {
-      "version": "0.3.8",
-      "from": "fsevents@0.3.8",
-      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-0.3.8.tgz",
-      "dependencies": {
-        "nan": {
-          "version": "2.0.5",
-          "from": "nan@>=2.0.2 <3.0.0",
-          "resolved": "https://registry.npmjs.org/nan/-/nan-2.0.5.tgz"
-        }
-      }
-    },
     "jade": {
       "version": "1.11.0",
       "from": "jade@*",

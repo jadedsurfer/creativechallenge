@@ -6,7 +6,6 @@
   },
   "main": "server/server.js",
   "scripts": {
-    "postinstall": "cd ionic && bower install",
     "start": "node server/server.js",
     "pretest": "jshint .",
     "test": "gulp test",

@@ -74,8 +74,8 @@ function setUpRouter(router, staticMiddleware, options){
 
   router.get(
     options.mountBuildJsToRoute,
-    exports.serveHtml(options.pathToEntryJs)
-    //exports.serveBrowserified(options.pathToEntryJs)
+    //exports.serveHtml(options.pathToEntryJs)
+    exports.serveBrowserified(options.pathToEntryJs)
   );
 
   router.use('/', staticMiddleware(options.staticRoot));

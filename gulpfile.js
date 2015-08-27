@@ -162,7 +162,10 @@ gulp.task('default', ['server:start'], function(){
     './server/**/*.json',
     './common/**/*.js',
     './common/**/*.json',
-    './plugins/**/*.js'
+    './plugins/**/*.js',
+    './ionic/www/js/**/*.js',
+    '!./ionic/www/js/build.js',
+    '!./ionic/www/js/common/lb.services.js'
   ], function(){
     // This will need to change for gulp v4
     gulp.run('server:restart');

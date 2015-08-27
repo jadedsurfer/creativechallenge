@@ -4,6 +4,8 @@ global angular, window
 
 // Loopback models
 var lbServices = require('./common/lb.services');
+var ccRun = require('./cc.run');
+var ccConfig = require('./cc.config');
 
 var ccModule = angular.module('cc', [
   'ionic',
@@ -15,11 +17,13 @@ var ccModule = angular.module('cc', [
   'currentUserModule'
 ])
 
-.run(require('./cc.run'))
+.run(['$ionicPlatform', ccRun])
 
-.config(require('./cc.config'));
+.config(['$stateProvider', '$urlRouterProvider', ccConfig]);
+
 
 require('./auth/auth.module');
+require('./current-user/current-user.module');
 require('./account/account.module');
 
 window.evaporateOptions = {
@@ -31,7 +35,6 @@ window.evaporateOptions = {
   cloudfront: false,
   aws_url: 'https://s3-us-west-1.amazonaws.com'
 };
-
 window.Evaporate = require('../lib/evaporatejs');
 require('./s3upload/s3upload.module');
 require('../lib/angular-evaporate/lib/angular-evaporate');
@@ -39,7 +42,7 @@ require('../lib/angular-evaporate/lib/angular-evaporate');
 require('./challenge/challenge.module');
 require('./submission/submission.module');
 require('./vote/vote.module');
-require('./current-user/current-user.module');
+
 
 
 
